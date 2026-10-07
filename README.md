@@ -1,5 +1,6 @@
 # 🏦 LoanSense AI — Intelligent Loan Underwriting & Risk Analytics
 
+[![Live Demo](https://img.shields.io/badge/Live%20App-loan--approvals.streamlit.app-FF4B4B.svg?logo=streamlit&logoColor=white)](https://loan-approvals.streamlit.app/)
 [![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB.svg?logo=python&logoColor=white)](https://www.python.org/)
 [![Scikit-Learn](https://img.shields.io/badge/scikit--learn-1.8.0-F7931E.svg?logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.51.0-FF4B4B.svg?logo=streamlit&logoColor=white)](https://streamlit.io/)
@@ -7,6 +8,8 @@
 [![Holdout F1](https://img.shields.io/badge/Holdout_F1-0.942-10b981.svg)](#-model-benchmarking--evaluation)
 [![ROC-AUC](https://img.shields.io/badge/ROC--AUC-0.991-0284c7.svg)](#-model-benchmarking--evaluation)
 [![Test Accuracy](https://img.shields.io/badge/Accuracy-95.8%25-38bdf8.svg)](#-model-benchmarking--evaluation)
+
+> 🚀 **Live Interactive Dashboard:** **[https://loan-approvals.streamlit.app/](https://loan-approvals.streamlit.app/)**
 
 An end-to-end Machine Learning credit decisioning system that automates loan adjudication, minimizes non-performing assets (NPAs), and provides real-time risk intelligence. Powered by a leak-free scikit-learn pipeline and a tuned **Gradient Boosting Classifier**, the system achieves an **$F_1$-score of 0.942**, a **ROC-AUC of 0.991**, and **95.8% accuracy** on held-out test data.
 
@@ -84,6 +87,8 @@ Models were evaluated across 7 classification algorithms using **5-Fold Stratifi
 
 ## 🖥️ Interactive Web Application (`app.py`)
 
+> 🌐 **Try it live:** **[https://loan-approvals.streamlit.app/](https://loan-approvals.streamlit.app/)**
+
 The included **Streamlit Web Application** offers a full analytics and decisioning platform:
 
 ```mermaid
@@ -147,9 +152,11 @@ jupyter notebook project.ipynb
 
 ---
 
-## ☁️ 1-Click Free Deployment on Streamlit Cloud
+## ☁️ Live Deployment & Streamlit Cloud
+ 
+- 🌐 **Live Production App:** **[https://loan-approvals.streamlit.app/](https://loan-approvals.streamlit.app/)**
 
-To showcase a live interactive web app on your resume and LinkedIn:
+### Deploying Your Own Instance:
 1. Push this folder to a GitHub repository.
 2. Sign in to [share.streamlit.io](https://share.streamlit.io/) with GitHub.
 3. Click **"New app"**, select the repository and branch (`main`), set **Main file path** to `app.py`.
