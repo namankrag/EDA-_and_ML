@@ -2,7 +2,6 @@ import joblib
 import numpy as np
 import pandas as pd
 import plotly.express as px
-import plotly.figure_factory as ff
 import plotly.graph_objects as go
 import streamlit as st
 
@@ -638,29 +637,34 @@ with tab_model:
             st.markdown("#### 🎯 Holdout Test Confusion Matrix")
             st.caption("Evaluated on held-out 20% test partition (N=190 labeled cases):")
 
-            z = [[126, 4], [4, 56]]
-            x = ['Pred: Rejected', 'Pred: Approved']
-            y = ['Actual: Rejected', 'Actual: Approved']
-            z_text = [
-                ['<b>126</b><br><span style="font-size:11px;color:#94a3b8">True Negative</span>', 
-                 '<b>4</b><br><span style="font-size:11px;color:#f87171">False Positive</span>'],
-                ['<b>4</b><br><span style="font-size:11px;color:#f87171">False Negative</span>', 
-                 '<b>56</b><br><span style="font-size:11px;color:#4ade80">True Positive</span>']
+            cm_z = [[126, 4], [4, 56]]
+            cm_x = ['Pred: Rejected', 'Pred: Approved']
+            cm_y = ['Actual: Rejected', 'Actual: Approved']
+
+            fig_cm = go.Figure(data=go.Heatmap(
+                z=cm_z,
+                x=cm_x,
+                y=cm_y,
+                colorscale=[[0, '#0f172a'], [0.2, '#1e293b'], [1, '#0369a1']],
+                showscale=False
+            ))
+
+            cm_annotations = [
+                dict(x=cm_x[0], y=cm_y[0], text='<b>126</b><br><span style="font-size:11px;color:#94a3b8">True Negative</span>', showarrow=False, font=dict(color="white", size=14)),
+                dict(x=cm_x[1], y=cm_y[0], text='<b>4</b><br><span style="font-size:11px;color:#f87171">False Positive</span>', showarrow=False, font=dict(color="white", size=14)),
+                dict(x=cm_x[0], y=cm_y[1], text='<b>4</b><br><span style="font-size:11px;color:#f87171">False Negative</span>', showarrow=False, font=dict(color="white", size=14)),
+                dict(x=cm_x[1], y=cm_y[1], text='<b>56</b><br><span style="font-size:11px;color:#4ade80">True Positive</span>', showarrow=False, font=dict(color="white", size=14)),
             ]
 
-            fig_cm = ff.create_annotated_heatmap(
-                z, x=x, y=y, annotation_text=z_text, 
-                colorscale=[[0, '#0f172a'], [0.2, '#1e293b'], [1, '#0369a1']],
-                font_colors=['#ffffff']
-            )
             fig_cm.update_layout(
                 template="plotly_dark",
+                annotations=cm_annotations,
                 paper_bgcolor="rgba(0,0,0,0)",
                 plot_bgcolor="rgba(0,0,0,0)",
                 margin=dict(t=20, b=30, l=110, r=20),
                 height=300,
                 xaxis=dict(tickfont=dict(size=12, color="#f1f5f9"), side="bottom"),
-                yaxis=dict(tickfont=dict(size=12, color="#f1f5f9"))
+                yaxis=dict(tickfont=dict(size=12, color="#f1f5f9"), autorange="reversed")
             )
             st.plotly_chart(fig_cm, use_container_width=True)
 
